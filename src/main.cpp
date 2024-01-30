@@ -62,38 +62,15 @@ void loop() {
 #endif
 
 #if 1
-#include <Arduino.h>
-#include <Arduino.h>
-#include <esp32_button.h>
+#include <keyboard_ble.h>
 
-#define BUTTON_1_PIN 33
-#define BUTTON_2_PIN 32
-
-button_t button_1;
-button_t button_2;
-
-void IRAM_ATTR button_isr()
-{
-  button_update(&button_1);
-}
-
-void setup()
-{
+void setup() {
   Serial.begin(115200);
-
-  button_add_default(&button_1, BUTTON_1_PIN);
-
-  button_init(&button_isr);
+  button_config();
+  BLE_Config();
 }
 
-void loop()
-{
-  if(button_1.mode) {
-    Serial.print("Button mode: ");
-    Serial.println(button_1.mode);
-    button_1.mode = NONE;
-  }
-  
-  delay(100);
+void loop() {
+  onDataSent();
 }
 #endif
