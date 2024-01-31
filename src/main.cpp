@@ -11,5 +11,6 @@ void setup() {
 void loop() {
   uint8_t test = button_scan();
   onDataSent(test);
+  delay(100);
 }
 #endif

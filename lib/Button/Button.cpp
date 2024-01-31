@@ -46,42 +46,52 @@ void button_config(void) {
 uint8_t button_scan(void) {
     if(button_0.mode) {
         buttonInitCheck++;
+        delay(100);
         button_0.mode = NONE;
         return BUTTON_0;
     } else if(button_1.mode) {
         buttonInitCheck++;
+        delay(100);
         button_1.mode = NONE;
         return BUTTON_1;
     } else if(button_2.mode) {
         buttonInitCheck++;
+        delay(100);
         button_2.mode = NONE;
         return BUTTON_2;
     } else if(button_3.mode) {
         buttonInitCheck++;
+        delay(100);
         button_3.mode = NONE;
         return BUTTON_3;
     } else if(button_4.mode) {
         buttonInitCheck++;
+        delay(100);
         button_4.mode = NONE;
         return BUTTON_4;
     } else if(button_5.mode) {
         buttonInitCheck++;
+        delay(100);
         button_5.mode = NONE;
         return BUTTON_5;
     } else if(button_6.mode) {
         buttonInitCheck++;
+        delay(100);
         button_6.mode = NONE;
         return BUTTON_6;
     } else if(button_7.mode) {
         buttonInitCheck++;
+        delay(100);
         button_7.mode = NONE;
         return BUTTON_7;
     } else if(button_8.mode) {
         buttonInitCheck++;
+        delay(100);
         button_8.mode = NONE;
         return BUTTON_8;
     } else if(button_9.mode) {
         buttonInitCheck++;
+        delay(100);
         button_9.mode = NONE;
         return BUTTON_9;
     }

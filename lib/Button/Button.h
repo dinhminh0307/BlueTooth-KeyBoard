@@ -9,7 +9,7 @@
 #define BUTTON_6_PIN 18  // GPIO18
 #define BUTTON_7_PIN 19  // GPIO19
 #define BUTTON_8_PIN 21  // GPIO21 (Skipping GPIO20 as it's not available on most ESP32 boards)
-#define BUTTON_9_PIN 22  // GPIO22
+#define BUTTON_9_PIN 32 // GPIO32
 
 #define BUTTON_0 0x30
 #define BUTTON_1 0x31

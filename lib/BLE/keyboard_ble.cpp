@@ -11,6 +11,7 @@ void BLE_Config(void) {
 
 void onDataSent(uint8_t tmp) {
     int numButtons = sizeof(allButtons) / sizeof(allButtons[0]); // Calculate the number of elements in the array
+    Serial.println(buttonInitCheck);
     if (bleKeyboard.isConnected() && buttonInitCheck != 0) {
         while(i < numButtons) {
             if(tmp == (char)allButtons[i]) {
@@ -22,4 +23,5 @@ void onDataSent(uint8_t tmp) {
         }
       }
     i = 0;
+    buttonInitCheck = 0;
 }
