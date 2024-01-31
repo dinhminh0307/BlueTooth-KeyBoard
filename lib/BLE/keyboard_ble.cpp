@@ -1,27 +1,25 @@
 #include "./keyboard_ble.h"
 
 BleKeyboard bleKeyboard("Dinh Minh Keyboard");
+ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7, NUM_8, NUM_9};
+
+volatile int i = 0;
 
 void BLE_Config(void) {
     bleKeyboard.begin();
 }
 
-void onDataSent(void) {
-  static unsigned long lastDebounceTime = 0; // Stores the last time the button was toggled
-  unsigned long debounceDelay = 100; // the debounce time; increase if the output flickers
-
-  // Check if the button is pressed (assuming button_1.mode is set elsewhere when the button is pressed)
-  if (button_1.mode) {
-    // Check if enough time has passed since the last debounce time
-    if ((millis() - lastDebounceTime) > debounceDelay) {
-      // Enough time has passed since the last press
-      if (bleKeyboard.isConnected()) {
-        bleKeyboard.print("e");
+void onDataSent(uint8_t tmp) {
+    int numButtons = sizeof(allButtons) / sizeof(allButtons[0]); // Calculate the number of elements in the array
+    if (bleKeyboard.isConnected() && buttonInitCheck != 0) {
+        while(i < numButtons) {
+            if(tmp == (char)allButtons[i]) {
+                bleKeyboard.print((char)allButtons[i]);
+                break;
+            } else {
+                i++;
+            }
+        }
       }
-
-      lastDebounceTime = millis(); // Reset the debouncing timer
-    }
-
-    button_1.mode = NONE; // Reset the button mode
-  }
+    i = 0;
 }
