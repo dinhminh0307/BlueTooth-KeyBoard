@@ -1,7 +1,6 @@
 
 #if 1
 #include <keyboard_ble.h>
-#include <OLED.h>
 
 void setup() {
   Serial.begin(115200);

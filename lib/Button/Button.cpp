@@ -12,6 +12,7 @@ button_t button_1;
 button_t button_0;
 
 volatile int buttonInitCheck = 0;
+volatile int gameState = DISCONNECT;
 
 void IRAM_ATTR button_isr()
 {

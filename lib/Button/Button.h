@@ -22,6 +22,9 @@
 #define BUTTON_8 0x38
 #define BUTTON_9 0x39
 
+#define CONNECT 1
+#define DISCONNECT 0
+
 extern button_t button_0;
 extern button_t button_1;
 extern button_t button_2;
@@ -33,6 +36,7 @@ extern button_t button_7;
 extern button_t button_8;
 extern button_t button_9;
 extern volatile int buttonInitCheck;
+extern volatile int gameState;
 
 void button_config(void);
 uint8_t button_scan(void);
