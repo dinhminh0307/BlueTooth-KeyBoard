@@ -1,5 +1,8 @@
 #include <esp32_button.h>
 
+//-------------------------
+//       Number button
+//-------------------------
 #define BUTTON_0_PIN 23
 #define BUTTON_1_PIN 33
 #define BUTTON_2_PIN 14  // GPIO14
@@ -22,9 +25,28 @@
 #define BUTTON_8 0x38
 #define BUTTON_9 0x39
 
+//-------------------------
+//       Switch Button
+//-------------------------
+#define BUTTON_SWITCH_PIN 27
+
+#define BUTTON_SWITCH 0x01
+
+//-------------------------
+//       Enter Button
+//-------------------------
+#define BUTTON_ENTER_PIN 12
+#define BUTTON_ENTER 0x0A
+
+//-------------------------
+//       State
+//-------------------------
 #define CONNECT 1
 #define DISCONNECT 0
 
+//-------------------------
+//       Number declaration
+//-------------------------
 extern button_t button_0;
 extern button_t button_1;
 extern button_t button_2;
@@ -35,8 +57,22 @@ extern button_t button_6;
 extern button_t button_7;
 extern button_t button_8;
 extern button_t button_9;
+
+//-------------------------
+//       Enter declaration
+//-------------------------
+extern button_t button_enter;
+//-------------------------
+//       Flag declaration
+//-------------------------
 extern volatile int buttonInitCheck;
 extern volatile int gameState;
-
+extern volatile int isEnterClick;
+//-------------------------
+//       Init functions
+//-------------------------
 void button_config(void);
+//-------------------------
+//       Logic functions
+//-------------------------
 uint8_t button_scan(void);

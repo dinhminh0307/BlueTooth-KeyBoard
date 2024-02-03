@@ -10,7 +10,10 @@ void setup() {
 }
 
 void loop() {
+  displayDev();
   uint8_t test = button_scan();
+  // Serial.print("Button mode: ");
+  // Serial.println(button_enter.mode);
   onDataSent(test);
   delay(100);
 }

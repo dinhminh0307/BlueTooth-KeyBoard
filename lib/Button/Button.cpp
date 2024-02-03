@@ -11,8 +11,11 @@ button_t button_9;
 button_t button_1;
 button_t button_0;
 
+button_t button_enter;
+
 volatile int buttonInitCheck = 0;
 volatile int gameState = DISCONNECT;
+volatile int isEnterClick = 0;
 
 void IRAM_ATTR button_isr()
 {
@@ -95,6 +98,12 @@ uint8_t button_scan(void) {
         delay(100);
         button_9.mode = NONE;
         return BUTTON_9;
+    } else if(button_enter.mode) {
+        buttonInitCheck++;
+        isEnterClick++;
+        delay(100);
+        button_enter.mode = NONE;
+        return BUTTON_ENTER;
     }
     return 0x00;
 }

@@ -1,6 +1,9 @@
 #include "./OLED.h"
 
+/*Author: Dinh Minh*/
+
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+volatile int isWelcomeMenuDis = 0;
 
 text_struct calculateDesiredAlignment(int size, String tmp) {
     text_struct cleaner;
@@ -17,11 +20,19 @@ void displayData(char key, int size) {
   tmp+= key;
   display.clearDisplay();
   display.setTextColor(SSD1306_WHITE); // Draw white text
-  if(gameState == DISCONNECT) {
-    text_struct currentText;
-    currentText = calculateDesiredAlignment(size, tmp);
-    display.setTextSize(size);      // Normal 1:1 pixel scale
-    display.setCursor(currentText.x, currentText.y);     // Start at top-left corner
+  if(gameState == DISCONNECT) { // when the board plays as the calculator
+    if(isWelcomeMenuDis == 0) {
+      text_struct currentText;
+      currentText = calculateDesiredAlignment(size, tmp);
+      display.setTextSize(1);      // Normal 1:1 pixel scale
+      display.setCursor(currentText.x, currentText.y);     // Start at top-left corner
+      if(isEnterClick >= 2) { // if user see the authorization, the welcome screen will be off
+        isWelcomeMenuDis = 1;
+      }  
+    } else {
+      display.setTextSize(size);      // The calculator will be calculate on the top right of the screen
+      display.setCursor(128, 0);     
+    }
   } else {
     display.setTextSize(size);      // Normal 1:1 pixel scale
     display.setCursor(0, 0);     // Start at top-left corner 
@@ -46,3 +57,11 @@ void LCD_Init(void) {
   displayWelcomeMsg();
 }
 
+void displayDev(void) {
+  if(isEnterClick) {
+    String txt = "Developed by Minh Dinh";
+    for(int i = 0; i < txt.length(); i++) {
+      displayData(txt.charAt(i), 1);
+    }
+  }
+}

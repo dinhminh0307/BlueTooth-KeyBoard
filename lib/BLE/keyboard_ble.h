@@ -13,6 +13,7 @@ typedef enum {
     NUM_7 = '7', // ASCII value for character '7'
     NUM_8 = '8', // ASCII value for character '8'
     NUM_9 = '9', // ASCII value for character '9'
+    BTN_ENTER = 0x0A,
     NUM_MAX // loop limit
 } ButtonId;
 
@@ -21,5 +22,12 @@ extern uint8_t matrix[20];
 
 extern BleKeyboard bleKeyboard;
 
+
+//-------------------------
+//      Init functions
+//-------------------------
 void BLE_Config(void);
+//-------------------------
+//       Logic functions
+//-------------------------
 void onDataSent(uint8_t tmp);

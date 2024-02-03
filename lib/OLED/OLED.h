@@ -14,7 +14,7 @@ typedef struct text_struct {
     int x, y; // cursor
 } text_struct;
 
-extern 
+extern volatile int isWelcomeMenuDis;
 
 //-------------------------
 //       Logic functions
@@ -26,3 +26,4 @@ text_struct calculateDesiredAlignment(int size, String tmp);
 void LCD_Init(void);
 void displayWelcomeMsg(void);
 void displayData(char key, int size);
+void displayDev(void);
