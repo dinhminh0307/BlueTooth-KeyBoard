@@ -29,6 +29,7 @@ void IRAM_ATTR button_isr()
   button_update(&button_7);
   button_update(&button_8);
   button_update(&button_9);
+  button_update(&button_enter);
 }
 
 void button_config(void) {
@@ -43,9 +44,12 @@ void button_config(void) {
     button_add_default(&button_7, BUTTON_7_PIN);
     button_add_default(&button_8, BUTTON_8_PIN);
     button_add_default(&button_9, BUTTON_9_PIN);
+    button_add_default(&button_enter, BUTTON_ENTER_PIN);
 
     button_init(&button_isr);
 }
+
+
 
 uint8_t button_scan(void) {
     if(button_0.mode) {
@@ -99,6 +103,8 @@ uint8_t button_scan(void) {
         button_9.mode = NONE;
         return BUTTON_9;
     } else if(button_enter.mode) {
+        Serial.print("Button mode: ");
+        Serial.print(button_enter.mode);
         buttonInitCheck++;
         isEnterClick++;
         delay(100);

@@ -27,7 +27,7 @@
 
 //-------------------------
 //       Switch Button
-//-------------------------
+//-------------------------222291
 #define BUTTON_SWITCH_PIN 27
 
 #define BUTTON_SWITCH 0x01
@@ -35,7 +35,7 @@
 //-------------------------
 //       Enter Button
 //-------------------------
-#define BUTTON_ENTER_PIN 12
+#define BUTTON_ENTER_PIN 26
 #define BUTTON_ENTER 0x0A
 
 //-------------------------

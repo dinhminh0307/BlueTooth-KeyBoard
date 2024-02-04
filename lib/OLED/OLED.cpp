@@ -4,6 +4,8 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 volatile int isWelcomeMenuDis = 0;
+volatile int function_ctr = 0;
+String txt = "NCT BLE Calculator";
 
 text_struct calculateDesiredAlignment(int size, String tmp) {
     text_struct cleaner;
@@ -27,7 +29,9 @@ void displayData(char key, int size) {
       display.setTextSize(1);      // Normal 1:1 pixel scale
       display.setCursor(currentText.x, currentText.y);     // Start at top-left corner
       if(isEnterClick >= 2) { // if user see the authorization, the welcome screen will be off
+      // reset flag
         isWelcomeMenuDis = 1;
+        isEnterClick = 0;
       }  
     } else {
       display.setTextSize(size);      // The calculator will be calculate on the top right of the screen
@@ -42,7 +46,7 @@ void displayData(char key, int size) {
 }
 
 void displayWelcomeMsg(void) {
-  String txt = "NCT BLE Calculator";
+  
   for(int i = 0; i < txt.length(); i++) {
     displayData(txt.charAt(i), 1);
   }
@@ -58,10 +62,16 @@ void LCD_Init(void) {
 }
 
 void displayDev(void) {
-  if(isEnterClick) {
-    String txt = "Developed by Minh Dinh";
-    for(int i = 0; i < txt.length(); i++) {
-      displayData(txt.charAt(i), 1);
+  if(isEnterClick < 2 && isEnterClick > 0) { // after welcome menu displayed
+    while(function_ctr > 0);
+    for(int i = 0; i < 128; i++) {
+      displayData(' ', 1);
     }
+    String dev_txt = "Author: Minh Dinh";
+    for(int i = 0; i < dev_txt.length(); i++) {
+      displayData(dev_txt.charAt(i), 1);
+    }
+
+    function_ctr++;
   }
 }

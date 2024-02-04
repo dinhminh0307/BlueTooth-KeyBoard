@@ -10,7 +10,7 @@ typedef enum {
     NUM_4 = '4', // ASCII value for character '4'
     NUM_5 = '5', // ASCII value for character '5'
     NUM_6 = '6', // ASCII value for character '6'
-    NUM_7 = '7', // ASCII value for character '7'
+    NUM_7 = '7', // ASCII value for character '7'222
     NUM_8 = '8', // ASCII value for character '8'
     NUM_9 = '9', // ASCII value for character '9'
     BTN_ENTER = 0x0A,

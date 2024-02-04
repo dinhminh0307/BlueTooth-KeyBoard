@@ -15,6 +15,6 @@ void loop() {
   // Serial.print("Button mode: ");
   // Serial.println(button_enter.mode);
   onDataSent(test);
-  delay(100);
+  delay(500);
 }
 #endif
