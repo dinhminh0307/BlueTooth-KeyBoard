@@ -65,12 +65,12 @@ void LCD_Init(void) {
   }
   Serial.println("ok");
   displayWelcomeMsg();
-  while(button_enter.mode == 0); // error is here
-  Serial.println("Work2");
-  button_enter.mode = NONE;
-  displayDev();
-  while(button_enter.mode == 0);
-  button_enter.mode = NONE;
+  // while(button_enter.mode == 0); // error is here
+  // Serial.println("Work2");
+  // button_enter.mode = NONE;
+  // displayDev();
+  // while(button_enter.mode == 0);
+  // button_enter.mode = NONE;
 }
 
 void displayDev(void) {

@@ -14,6 +14,10 @@ typedef enum {
     NUM_8 = '8', // ASCII value for character '8'
     NUM_9 = '9', // ASCII value for character '9'
     BTN_ENTER = 0x0A,
+    BTN_PLUS = 0x2B,
+    BTN_MINUS = 0x2D,
+    BTN_MULTIPLY = 0x2A,
+    BTN_DIVIDE = 0x2F,
     NUM_MAX // loop limit
 } ButtonId;
 

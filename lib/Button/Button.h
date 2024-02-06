@@ -39,6 +39,21 @@
 #define BUTTON_ENTER 0x0A
 
 //-------------------------
+//       + - * /
+//-------------------------
+#define BUTTON_PLUS_PIN 12 /////////// +
+#define BUTTON_PLUS 0x2B    //////////
+
+#define BUTTON_MINUS_PIN 35 ////////// -
+#define BUTTON_MINUS 0x2D //////////
+
+#define BUTTON_MULTIPLY_PIN 4 ////////// *
+#define BUTTON_MULTIPLY 0x2A    ////////////
+
+#define BUTTON_DIVIDE_PIN 2 ////////// divide
+#define BUTTON_DIVIDE 0x2F    ////////////
+
+//-------------------------
 //       State
 //-------------------------
 #define CONNECT 1
@@ -62,6 +77,14 @@ extern button_t button_9;
 //       Enter declaration
 //-------------------------
 extern button_t button_enter;
+
+//-------------------------
+//       + - * / declaration
+//-------------------------
+extern button_t button_plus;
+extern button_t button_minus;
+extern button_t button_multiply;
+extern button_t button_divide;
 //-------------------------
 //       Flag declaration
 //-------------------------

@@ -13,6 +13,11 @@ button_t button_0;
 
 button_t button_enter;
 
+button_t button_plus;
+button_t button_minus;
+button_t button_multiply;
+button_t button_divide;
+
 volatile int buttonInitCheck = 0;
 volatile int gameState = DISCONNECT;
 volatile int isEnterClick = 0;
@@ -30,6 +35,10 @@ void IRAM_ATTR button_isr()
   button_update(&button_8);
   button_update(&button_9);
   button_update(&button_enter);
+  button_update(&button_plus);
+  button_update(&button_minus);
+  button_update(&button_multiply);
+  button_update(&button_divide);
 }
 
 void button_config(void) {
@@ -45,7 +54,10 @@ void button_config(void) {
     button_add_default(&button_8, BUTTON_8_PIN);
     button_add_default(&button_9, BUTTON_9_PIN);
     button_add_default(&button_enter, BUTTON_ENTER_PIN);
-
+    button_add_default(&button_plus, BUTTON_PLUS_PIN);
+    button_add_default(&button_minus, BUTTON_MINUS_PIN);
+    button_add_default(&button_multiply, BUTTON_MULTIPLY_PIN);
+    button_add_default(&button_divide, BUTTON_DIVIDE_PIN);
     button_init(&button_isr);
 }
 

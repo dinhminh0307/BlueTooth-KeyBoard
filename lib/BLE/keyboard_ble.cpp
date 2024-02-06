@@ -1,7 +1,8 @@
 #include "./keyboard_ble.h"
 
 BleKeyboard bleKeyboard("Dinh Minh Keyboard");
-ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7, NUM_8, NUM_9, BTN_ENTER, NUM_MAX};
+ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7, 
+                        NUM_8, NUM_9, BTN_ENTER, BTN_PLUS, BTN_MINUS, BTN_MULTIPLY, BTN_DIVIDE, NUM_MAX};
 
 volatile int i = 0;
 
