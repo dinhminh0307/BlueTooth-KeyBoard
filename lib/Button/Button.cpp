@@ -103,8 +103,8 @@ uint8_t button_scan(void) {
         button_9.mode = NONE;
         return BUTTON_9;
     } else if(button_enter.mode) {
-        Serial.print("Button mode: ");
-        Serial.print(button_enter.mode);
+        Serial.print("is enter clicked: ");
+        Serial.print(isEnterClick);
         buttonInitCheck++;
         isEnterClick++;
         delay(100);

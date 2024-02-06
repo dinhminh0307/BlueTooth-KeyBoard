@@ -27,3 +27,4 @@ void LCD_Init(void);
 void displayWelcomeMsg(void);
 void displayData(char key, int size);
 void displayDev(void);
+void clearDisplay(void);
