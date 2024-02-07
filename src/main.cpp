@@ -11,7 +11,10 @@ void setup() {
 }
 
 void loop() {
+
+  
   uint8_t test = button_scan();
+  Serial.println(buttonInitCheck);
   // Serial.print("Button mode: ");
     // Serial.println(button_enter.mode);
   onDataSent(test);

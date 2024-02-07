@@ -122,6 +122,26 @@ uint8_t button_scan(void) {
         delay(100);
         button_enter.mode = NONE;
         return BUTTON_ENTER;
+    } else if(button_plus.mode) {
+        buttonInitCheck++;
+        delay(100);
+        button_plus.mode = NONE;
+        return BUTTON_PLUS;
+    } else if(button_minus.mode) {
+        buttonInitCheck++;
+        delay(100);
+        button_minus.mode = NONE;
+        return BUTTON_MINUS;
+    } else if(button_multiply.mode) {
+        buttonInitCheck++;
+        delay(100);
+        button_multiply.mode = NONE;
+        return BUTTON_MULTIPLY;
+    } else if(button_divide.mode) {
+        buttonInitCheck++;
+        delay(100);
+        button_divide.mode = NONE;
+        return BUTTON_DIVIDE;
     }
     return 0x00;
 }

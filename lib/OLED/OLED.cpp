@@ -5,7 +5,7 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 volatile int isWelcomeMenuDis = 0;
 volatile int function_ctr = 0;
-String txt = "NCT BLE Calculator";
+String txt = "BLE Calculator";
 
 void clearDisplay(void) {
   txt = "";
@@ -16,7 +16,8 @@ text_struct calculateDesiredAlignment(int size, String tmp) {
 
 
     int textWidth = 6 * size * tmp.length(); // 6 is the approximate width of a character in pixels
-    int textHeight = 8 * size; // 8 is the approximate height of a charac23ter in pixels
+    int textHeight = 8 * size; // 8 is the approxim7ate height of a charac23ter in pixels
+    
 
     cleaner.x = (128 - textWidth) / 2;
     cleaner.y = (64 - textHeight) / 2;

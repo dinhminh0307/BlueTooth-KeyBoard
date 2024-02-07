@@ -54,7 +54,7 @@
 #define BUTTON_DIVIDE 0x2F    ////////////
 
 //-------------------------
-//       State
+//       State +++9
 //-------------------------
 #define CONNECT 1
 #define DISCONNECT 0
