@@ -39,6 +39,7 @@ void IRAM_ATTR button_isr()
   button_update(&button_minus);
   button_update(&button_multiply);
   button_update(&button_divide);
+  button_update(&button_switch);
 }
 
 void button_config(void) {
@@ -58,6 +59,7 @@ void button_config(void) {
     button_add_default(&button_minus, BUTTON_MINUS_PIN);
     button_add_default(&button_multiply, BUTTON_MULTIPLY_PIN);
     button_add_default(&button_divide, BUTTON_DIVIDE_PIN);
+    button_add_default(&button_switch, BUTTON_SWITCH_PIN);
     button_init(&button_isr);
 }
 
@@ -115,8 +117,6 @@ uint8_t button_scan(void) {
         button_9.mode = NONE;
         return BUTTON_9;
     } else if(button_enter.mode) {
-        Serial.print("is enter clicked: ");
-        Serial.print(isEnterClick);
         buttonInitCheck++;
         isEnterClick++;
         delay(100);
@@ -142,6 +142,16 @@ uint8_t button_scan(void) {
         delay(100);
         button_divide.mode = NONE;
         return BUTTON_DIVIDE;
+    } else if(button_switch.mode) {
+        if(gameState == DISCONNECT) {
+            gameState = CONNECT;
+        } else {
+            gameState = DISCONNECT;
+        }
+        buttonInitCheck++;
+        delay(100);
+        button_switch.mode = NONE;
+        return BUTTON_SWITCH;
     }
     return 0x00;
 }

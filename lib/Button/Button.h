@@ -59,6 +59,7 @@
 #define CONNECT 1
 #define DISCONNECT 0
 
+
 //-------------------------
 //       Number declaration
 //-------------------------
@@ -85,12 +86,18 @@ extern button_t button_plus;
 extern button_t button_minus;
 extern button_t button_multiply;
 extern button_t button_divide;
+
+//-------------------------
+//       + - * / declaration
+//-------------------------
+extern button_t button_switch;
 //-------------------------
 //       Flag declaration
 //-------------------------
 extern volatile int buttonInitCheck;
 extern volatile int gameState;
 extern volatile int isEnterClick;
+
 //-------------------------
 //       Init functions
 //-------------------------
