@@ -29,7 +29,7 @@ void displayData(char key, int size) {
   tmp+= key;
   display.clearDisplay();
   display.setTextColor(SSD1306_WHITE); // Draw white text
-  if(gameState == DISCONNECT) { // when the board plays as the calculator
+  if(gameState == CONNECT) { // when the board plays as the calculator
     if(isWelcomeMenuDis == 0) {
       text_struct currentText;
       currentText = calculateDesiredAlignment(size, tmp);

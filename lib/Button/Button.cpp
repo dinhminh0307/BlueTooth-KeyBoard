@@ -12,6 +12,7 @@ button_t button_1;
 button_t button_0;
 
 button_t button_enter;
+button_t button_switch;
 
 button_t button_plus;
 button_t button_minus;
@@ -19,8 +20,20 @@ button_t button_multiply;
 button_t button_divide;
 
 volatile int buttonInitCheck = 0;
-volatile int gameState = DISCONNECT;
+volatile int gameState = CONNECT;
 volatile int isEnterClick = 0;
+
+ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7, 
+                        NUM_8, NUM_9, BTN_ENTER, BTN_PLUS, BTN_MINUS, BTN_MULTIPLY, BTN_DIVIDE, BTN_SWITCH, NUM_MAX};
+
+// Array of pointers to your button_t instances
+button_t* buttons[] = {
+    &button_0, &button_1, &button_2, &button_3, &button_4,
+    &button_5, &button_6, &button_7, &button_8, &button_9,
+    &button_enter, &button_plus, &button_minus, &button_multiply, &button_divide
+};
+
+int numButtons = sizeof(allButtons) / sizeof(allButtons[0]);
 
 void IRAM_ATTR button_isr()
 {
@@ -66,92 +79,27 @@ void button_config(void) {
 
 
 uint8_t button_scan(void) {
-    if(button_0.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_0.mode = NONE;
-        return BUTTON_0;
-    } else if(button_1.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_1.mode = NONE;
-        return BUTTON_1;
-    } else if(button_2.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_2.mode = NONE;
-        return BUTTON_2;
-    } else if(button_3.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_3.mode = NONE;
-        return BUTTON_3;
-    } else if(button_4.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_4.mode = NONE;
-        return BUTTON_4;
-    } else if(button_5.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_5.mode = NONE;
-        return BUTTON_5;
-    } else if(button_6.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_6.mode = NONE;
-        return BUTTON_6;
-    } else if(button_7.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_7.mode = NONE;
-        return BUTTON_7;
-    } else if(button_8.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_8.mode = NONE;
-        return BUTTON_8;
-    } else if(button_9.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_9.mode = NONE;
-        return BUTTON_9;
-    } else if(button_enter.mode) {
-        buttonInitCheck++;
-        isEnterClick++;
-        delay(100);
-        button_enter.mode = NONE;
-        return BUTTON_ENTER;
-    } else if(button_plus.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_plus.mode = NONE;
-        return BUTTON_PLUS;
-    } else if(button_minus.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_minus.mode = NONE;
-        return BUTTON_MINUS;
-    } else if(button_multiply.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_multiply.mode = NONE;
-        return BUTTON_MULTIPLY;
-    } else if(button_divide.mode) {
-        buttonInitCheck++;
-        delay(100);
-        button_divide.mode = NONE;
-        return BUTTON_DIVIDE;
-    } else if(button_switch.mode) {
-        if(gameState == DISCONNECT) {
-            gameState = CONNECT;
-        } else {
-            gameState = DISCONNECT;
+    for (int i = 0; i < sizeof(buttons) / sizeof(buttons[0]); ++i) {
+        if (buttons[i]->mode) {  // Assuming mode is a valid member to check if the button is pressed
+            buttonInitCheck++;
+            delay(100);  // Assuming delay() is a function you have defined elsewhere
+            buttons[i]->mode = NONE;  // Reset the button mode
+
+            // Special handling for specific buttons, if needed
+            if (allButtons[i] == BTN_ENTER) {
+                isEnterClick++;  // Assuming isEnterClick is a variable you've defined elsewhere
+            }
+
+            if (allButtons[i] == BTN_SWITCH) {
+                 if(gameState == DISCONNECT) {
+                    gameState = CONNECT;
+                } else {
+                    gameState = DISCONNECT;
+                }
+                buttonInitCheck++;
+            }
+            return allButtons[i];
         }
-        buttonInitCheck++;
-        delay(100);
-        button_switch.mode = NONE;
-        return BUTTON_SWITCH;
     }
-    return 0x00;
+    return 0x00;  // Return 0x00 if no button is pressed
 }

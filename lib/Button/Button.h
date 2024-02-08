@@ -98,6 +98,29 @@ extern volatile int buttonInitCheck;
 extern volatile int gameState;
 extern volatile int isEnterClick;
 
+typedef enum {
+    NUM_0 = '0', // ASCII value for character '0'
+    NUM_1 = '1', // ASCII value for character '1'
+    NUM_2 = '2', // ASCII value for character '2'
+    NUM_3 = '3', // ASCII value for character '3'
+    NUM_4 = '4', // ASCII value for character '4'
+    NUM_5 = '5', // ASCII value for character '5'
+    NUM_6 = '6', // ASCII value for character '6'
+    NUM_7 = '7', // ASCII value for character '7'222
+    NUM_8 = '8', // ASCII value for character '8'
+    NUM_9 = '9', // ASCII value for character '9'
+    BTN_ENTER = 0x0A,
+    BTN_PLUS = 0x2B,
+    BTN_MINUS = 0x2D,
+    BTN_MULTIPLY = 0x2A,
+    BTN_DIVIDE = 0x2F,
+    BTN_SWITCH = 0x01,
+    NUM_MAX // loop limit
+} ButtonId;
+
+extern ButtonId allButtons[];
+extern int numButtons;
+
 //-------------------------
 //       Init functions
 //-------------------------

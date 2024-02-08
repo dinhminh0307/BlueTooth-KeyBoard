@@ -13,8 +13,8 @@ void setup() {
 void loop() {
 
   uint8_t test = button_scan();
-  
-  if(gameState = DISCONNECT) {
+
+  if(gameState = CONNECT) {
     onDataSent(test);
   } else {
     // calculating function
