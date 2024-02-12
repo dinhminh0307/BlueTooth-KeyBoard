@@ -4,7 +4,6 @@
 
 
 
-
 extern uint8_t matrix[20];
 
 extern BleKeyboard bleKeyboard;

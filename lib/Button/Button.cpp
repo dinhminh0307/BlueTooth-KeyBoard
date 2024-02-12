@@ -20,9 +20,8 @@ button_t button_multiply;
 button_t button_divide;
 
 volatile int buttonInitCheck = 0;
-volatile int gameState = CONNECT;
 volatile int isEnterClick = 0;
-
+volatile int gameState = CONNECT;
 
 
 ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7, 
@@ -78,8 +77,6 @@ void button_config(void) {
     button_init(&button_isr);
 }
 
-
-
 uint8_t button_scan(void) {
     for (int i = 0; i < sizeof(buttons) / sizeof(buttons[0]); ++i) {
         if (buttons[i]->mode) {  // Assuming mode is a valid member to check if the button is pressed
@@ -93,7 +90,7 @@ uint8_t button_scan(void) {
             }
 
             if (allButtons[i] == BTN_SWITCH) {
-                 if(gameState == DISCONNECT) {
+                 if(gameState == DISCONNECT) { // bug here
                     gameState = CONNECT;
                 } else {
                     gameState = DISCONNECT;

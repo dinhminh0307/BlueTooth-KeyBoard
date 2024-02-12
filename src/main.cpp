@@ -8,17 +8,17 @@ void setup() {
   button_config();
   BLE_Config();
   LCD_Init();
+  OLED_Init();
 }
 
 void loop() {
-
   uint8_t test = button_scan();
-
-  if(gameState = CONNECT) {
+  if(gameState == CONNECT) {
+    displayData("This is keyboard");
     onDataSent(test);
   } else {
     // calculating function
-    printTest();
+    displayData("This is calculator");
   }
   delay(500);
 }

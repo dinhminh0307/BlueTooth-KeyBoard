@@ -1,4 +1,5 @@
 #include <esp32_button.h>
+#include "./Debug.h"
 
 //-------------------------
 //       Number button
@@ -57,8 +58,8 @@
 //-------------------------
 //       State +++9
 //-------------------------
-#define CONNECT 1
-#define DISCONNECT 0
+#define CONNECT 0
+#define DISCONNECT 1
 
 
 //-------------------------
@@ -96,8 +97,8 @@ extern button_t button_switch;
 //       Flag declaration
 //-------------------------
 extern volatile int buttonInitCheck;
-extern volatile int gameState;
 extern volatile int isEnterClick;
+extern volatile int gameState;
 
 typedef enum {
     NUM_0 = '0', // ASCII value for character '0'
@@ -121,6 +122,7 @@ typedef enum {
 
 extern ButtonId allButtons[];
 extern int numButtons;
+
 
 //-------------------------
 //       Init functions

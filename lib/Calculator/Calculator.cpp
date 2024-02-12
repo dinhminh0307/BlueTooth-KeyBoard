@@ -1,5 +1,7 @@
 #include "./Calculator.h"
 
+
+
 float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
     float result = 0.0;
     float number1 = num1 - '0'; // Convert from ASCII to integer
@@ -33,5 +35,5 @@ float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
 }
 
 void printResult(void) {
-
+    
 }

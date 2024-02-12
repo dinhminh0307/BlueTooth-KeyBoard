@@ -25,7 +25,7 @@ void onDataSent(uint8_t tmp) {
                 i++;
             }
         }
+        i = 0;
+        buttonInitCheck = 0;
       }
-    i = 0;
-    buttonInitCheck = 0;
 }
