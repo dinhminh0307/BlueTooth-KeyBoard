@@ -4,6 +4,7 @@
 | All keyboard functions programmatically         | Software | Done        |
 | OLED display data management                    | Software | Done        |
 | RTC data retrieval                              | Software | In Progress |
+| Developed debug tool for software               | Software | Done        |
 | Calculator function mode development            | Software | Done        |
 | Two modes: Calculator and Keyboard              | Software | Done        |
 | Bluetooth communication development             | Software | Done        |
