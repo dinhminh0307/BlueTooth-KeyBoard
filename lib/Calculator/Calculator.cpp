@@ -25,12 +25,13 @@ float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
             break;
         default:
             printf("Invalid operation.\n");
-            return 0; // Handle invalid operator error
-    }
+            return 0; // Handle invalid operator error239911*******
+
+  }
 
     return result;
 }
 
 void printResult(void) {
-    
+
 }

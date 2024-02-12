@@ -28,3 +28,4 @@ void displayWelcomeMsg(void);
 void displayData(char key, int size);
 void displayDev(void);
 void clearDisplay(void);
+void printTest(void);

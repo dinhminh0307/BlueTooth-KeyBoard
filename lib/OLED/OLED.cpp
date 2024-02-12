@@ -91,3 +91,11 @@ void displayDev(void) {
   display.print("Author: Minh Dinh");
   display.display(); 
 }
+
+void printTest(void) {
+  display.clearDisplay();
+  display.setTextSize(1);      // Normal 1:1 pixel scale
+  display.setCursor(0, 0);     // Start at top-left corner 
+  display.print("This is a test");
+  display.display(); 
+}

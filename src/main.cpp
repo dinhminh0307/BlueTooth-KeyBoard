@@ -18,6 +18,7 @@ void loop() {
     onDataSent(test);
   } else {
     // calculating function
+    printTest();
   }
   delay(500);
 }

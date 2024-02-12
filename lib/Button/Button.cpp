@@ -23,6 +23,8 @@ volatile int buttonInitCheck = 0;
 volatile int gameState = CONNECT;
 volatile int isEnterClick = 0;
 
+
+
 ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7, 
                         NUM_8, NUM_9, BTN_ENTER, BTN_PLUS, BTN_MINUS, BTN_MULTIPLY, BTN_DIVIDE, BTN_SWITCH, NUM_MAX};
 
@@ -30,7 +32,7 @@ ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7,
 button_t* buttons[] = {
     &button_0, &button_1, &button_2, &button_3, &button_4,
     &button_5, &button_6, &button_7, &button_8, &button_9,
-    &button_enter, &button_plus, &button_minus, &button_multiply, &button_divide
+    &button_enter, &button_plus, &button_minus, &button_multiply, &button_divide, &button_switch
 };
 
 int numButtons = sizeof(allButtons) / sizeof(allButtons[0]);
@@ -82,12 +84,12 @@ uint8_t button_scan(void) {
     for (int i = 0; i < sizeof(buttons) / sizeof(buttons[0]); ++i) {
         if (buttons[i]->mode) {  // Assuming mode is a valid member to check if the button is pressed
             buttonInitCheck++;
-            delay(100);  // Assuming delay() is a function you have defined elsewhere
+            delay(100);  // mute all bounce
             buttons[i]->mode = NONE;  // Reset the button mode
 
             // Special handling for specific buttons, if needed
             if (allButtons[i] == BTN_ENTER) {
-                isEnterClick++;  // Assuming isEnterClick is a variable you've defined elsewhere
+                isEnterClick++;  
             }
 
             if (allButtons[i] == BTN_SWITCH) {
