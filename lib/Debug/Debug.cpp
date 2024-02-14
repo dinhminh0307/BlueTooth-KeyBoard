@@ -2,6 +2,22 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+
+
+void displayWelcomeMsg(void) {
+  displayData("BLE calculator");
+}
+
+void LCD_Init(void) {
+    // Initialize with the I2C addr 0x3C (for the 128x64)
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;); // Don't proceed, loop forever
+  }
+  displayWelcomeMsg();
+}
+
+
 text_struct calculateDesiredAlignment(int size, String tmp) {
     text_struct cleaner;
 
@@ -13,14 +29,6 @@ text_struct calculateDesiredAlignment(int size, String tmp) {
     cleaner.x = (128 - textWidth) / 2;
     cleaner.y = (64 - textHeight) / 2;
     return cleaner;
-}
-
-void LCD_Init(void) {
-    // Initialize with the I2C addr 0x3C (for the 128x64)
-  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
-    Serial.println(F("SSD1306 allocation failed"));
-    for(;;); // Don't proceed, loop forever
-  }
 }
 
 void displayData(String tmp) {

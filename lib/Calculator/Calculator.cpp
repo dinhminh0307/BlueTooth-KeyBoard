@@ -1,6 +1,7 @@
 #include "./Calculator.h"
 
 
+String printedChar = ""; // char to be printed
 
 float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
     float result = 0.0;
@@ -34,6 +35,7 @@ float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
     return result;
 }
 
-void printResult(void) {
-    
+void printNumber(uint8_t tmp) {
+    printedChar += (char)tmp;
+    displayData(printedChar);
 }

@@ -121,6 +121,8 @@ typedef enum {
 } ButtonId;
 
 extern ButtonId allButtons[];
+
+// extern ButtonId allButtons[];
 extern int numButtons;
 
 

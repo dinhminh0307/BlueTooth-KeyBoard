@@ -90,7 +90,7 @@ uint8_t button_scan(void) {
             }
 
             if (allButtons[i] == BTN_SWITCH) {
-                 if(gameState == DISCONNECT) { // bug here
+                 if(gameState == DISCONNECT) { 
                     gameState = CONNECT;
                 } else {
                     gameState = DISCONNECT;

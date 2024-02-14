@@ -16,3 +16,4 @@ typedef struct text_struct {
 text_struct calculateDesiredAlignment(int size, String tmp);
 void displayData(String tmp);
 void LCD_Init(void);
+void displayWelcomeMsg(void);

@@ -1,6 +1,6 @@
 
 #if 1
-#include <keyboard_ble.h>
+#include <Calculator.h>
 /*For error: Failed to connect to ESP32: Invalid head of packet (0x5B): Possible serial noise or corruption
 hold the boot when it is uploading*/
 void setup() {
@@ -8,7 +8,6 @@ void setup() {
   button_config();
   BLE_Config();
   LCD_Init();
-  OLED_Init();
 }
 
 void loop() {
@@ -18,7 +17,7 @@ void loop() {
     onDataSent(test);
   } else {
     // calculating function
-    displayData("This is calculator");
+    printNumber(test);
   }
   delay(500);
 }
