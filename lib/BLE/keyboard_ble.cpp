@@ -18,7 +18,6 @@ void onDataSent(uint8_t tmp) {
                 if (allButtons[i] == BTN_ENTER) {
                     bleKeyboard.write(KEY_RETURN); // Send "Enter" keypress
                 } else {
-                    displayData("" + (char)allButtons[i]);
                     bleKeyboard.print((char)allButtons[i]); // Print the character corresponding to the button pressed
                 }
                 break;

@@ -8,29 +8,29 @@ void setup() {
   button_config();
   BLE_Config();
   LCD_Init();
+  delay(100);
+  clearScreen();
 }
 
 void loop() {
   uint8_t test = button_scan();
   if(gameState == CONNECT) {
-    displayData("This is keyboard");
+    if(isModeSwitch) {
+      clearScreen();
+      isModeSwitch = 0;
+    }
+    displayData(gameState);
     onDataSent(test);
   } else {
-    // calculating function
+    if(isModeSwitch) {
+      clearScreen();
+      isModeSwitch = 0;
+      calculatorCounter = 1;
+    }
+    // calculating functio7n
     printNumber(test);
+    //displayData(gameState);
   }
   delay(500);
-}
-#endif
-
-#if 0
-#include <Arduino.h>
-void setup() {
-  Serial.begin(115200);
-  Serial.print("OK");
-}
-
-void loop() {
-
 }
 #endif

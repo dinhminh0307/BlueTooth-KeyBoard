@@ -99,6 +99,8 @@ extern button_t button_switch;
 extern volatile int buttonInitCheck;
 extern volatile int isEnterClick;
 extern volatile int gameState;
+extern volatile int isModeSwitch;
+
 
 typedef enum {
     NUM_0 = '0', // ASCII value for character '0'
@@ -109,7 +111,7 @@ typedef enum {
     NUM_5 = '5', // ASCII value for character '5'
     NUM_6 = '6', // ASCII value for character '6'
     NUM_7 = '7', // ASCII value for character '7'222
-    NUM_8 = '8', // ASCII value for character '8'
+    NUM_8 = '8', // ASCII value for character '8'22
     NUM_9 = '9', // ASCII value for character '9'
     BTN_ENTER = 0x0A,
     BTN_PLUS = 0x2B,

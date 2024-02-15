@@ -2,6 +2,8 @@
 
 
 String printedChar = ""; // char to be printed
+volatile int calculatorCounter = 0;
+
 
 float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
     float result = 0.0;
@@ -28,14 +30,22 @@ float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
             break;
         default:
             printf("Invalid operation.\n");
-            return 0; // Handle invalid operator error239911*******
-
+            return 0; // Handle invalid operator error
   }
 
     return result;
 }
 
 void printNumber(uint8_t tmp) {
-    printedChar += (char)tmp;
-    displayData(printedChar);
+    if(tmp != 0x00 && tmp != BUTTON_ENTER) {
+        if(calculatorCounter == 0) {
+            printedChar += (char)tmp;
+            clearScreen();
+            displayData(printedChar);
+        }
+        else {
+            clearScreen();
+            calculatorCounter = 0;
+        }
+    }
 }

@@ -14,6 +14,10 @@ typedef struct text_struct {
 } text_struct;
 
 text_struct calculateDesiredAlignment(int size, String tmp);
-void displayData(String tmp);
+void displayData(const String &tmp);
+void displayData(char tmp[]);
+void displayData(const char tmp); // overload to print char
+void displayData(const int tmp); // overload to print int
 void LCD_Init(void);
 void displayWelcomeMsg(void);
+void clearScreen(void);
