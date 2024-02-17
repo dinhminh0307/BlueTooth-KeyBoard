@@ -12,4 +12,4 @@
 | Temperature data retrieval in calculator mode   | Software | In Progress |
 | Button component soldering                      | Hardware | In Progress |
 | 3D printing of case and bottom                  | Hardware | In Progress |
-| Battery wiring                                 | Hardware | In Progress |
+| Battery wiring                                  | Hardware | In Progress |

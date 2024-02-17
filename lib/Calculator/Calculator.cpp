@@ -1,14 +1,19 @@
 #include "./Calculator.h"
 
-
+char opt = 0;
 String printedChar = ""; // char to be printed
+String previousNumber = ""; // number 1 string then be converted to int
+String currentNumber = ""; // number 2 string then be converted to int
+volatile int newNumber = 1;
+
 volatile int calculatorCounter = 0;
+int result = 0;
+volatile int index_ctr = 0; // if there were more than 1 digit in the calculation, this flag will mark it
 
-
-float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
-    float result = 0.0;
-    float number1 = num1 - '0'; // Convert from ASCII to integer
-    float number2 = num2 - '0'; // Convert from ASCII to integer
+int keyboardCompute(int num1, uint8_t op , int num2) {
+    result = 0;
+    int number1 = num1 - '0'; // Convert from ASCII to integer
+    int number2 = num2 - '0'; // Convert from ASCII to integer
 
     switch (op) {
         case BTN_PLUS:
@@ -37,11 +42,31 @@ float keyboardCompute(ButtonId num1, ButtonId op, ButtonId num2) {
 }
 
 void printNumber(uint8_t tmp) {
-    if(tmp != 0x00 && tmp != BUTTON_ENTER) {
-        if(calculatorCounter == 0) {
-            printedChar += (char)tmp;
+     if(tmp != 0x00) {
+        if(calculatorCounter == 0 && tmp >= '0' && tmp <= '9' && tmp != BUTTON_ENTER) {
+            if(newNumber) {
+                currentNumber = (char)tmp;
+                newNumber = 0;
+            } else {
+                currentNumber += (char)tmp;
+            }
+
             clearScreen();
-            displayData(printedChar);
+            displayData(currentNumber);
+        }
+        if(calculatorCounter == 0 && tmp >= '*' && tmp <= '/' && tmp != BUTTON_ENTER) {
+            previousNumber = currentNumber;
+            clearScreen();
+            displayData(previousNumber + (char)tmp);
+            currentNumber = "";
+            opt = (char)tmp;
+            newNumber = 1;
+        }
+        if( calculatorCounter == 0 && tmp != BUTTON_ENTER) {
+            keyboardCompute(previousNumber.toInt(), opt, currentNumber.toInt());
+            clearScreen();
+            displayData(result);
+            delay(500);
         }
         else {
             clearScreen();
