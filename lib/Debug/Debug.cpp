@@ -81,3 +81,8 @@ void displayData(const int tmp) {
   display.print(tmp);
   display.display();
 }
+
+void RTC_Display(void) {
+  clearScreen();
+  displayData(RTC_GetTime());
+}

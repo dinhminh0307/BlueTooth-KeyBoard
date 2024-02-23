@@ -7,6 +7,7 @@ void setup() {
   Serial.begin(115200);
   button_config();
   BLE_Config();
+  RTC_config();
   LCD_Init();
   delay(100);
   clearScreen();
@@ -28,7 +29,8 @@ void loop() {
       calculatorCounter = 1;
     }
     // calculating functio7n
-    printNumber(test);
+    //printNumber(test);
+    RTC_Display();
     //displayData(gameState);
   }
   delay(500);
