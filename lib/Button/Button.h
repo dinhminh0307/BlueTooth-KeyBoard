@@ -12,7 +12,7 @@
 #define BUTTON_5_PIN 17  // GPIO17
 #define BUTTON_6_PIN 18  // GPIO18
 #define BUTTON_7_PIN 19  // GPIO19
-#define BUTTON_8_PIN 24  // GPIO24 
+#define BUTTON_8_PIN 34  // GPIO34 
 #define BUTTON_9_PIN 32 // GPIO32
 
 #define BUTTON_0 0x30
@@ -55,12 +55,6 @@
 #define BUTTON_DIVIDE_PIN 2 ////////// divide
 #define BUTTON_DIVIDE 0x2F    ////////////
 
-//-------------------------
-//       State +++9
-//-------------------------
-#define CONNECT 0
-#define DISCONNECT 1
-
 
 //-------------------------
 //       Number declaration
@@ -100,6 +94,7 @@ extern volatile int buttonInitCheck;
 extern volatile int isEnterClick;
 extern volatile int gameState;
 extern volatile int isModeSwitch;
+extern volatile int currentSelection;
 
 
 typedef enum {
@@ -121,6 +116,21 @@ typedef enum {
     BTN_SWITCH = 0x01,
     NUM_MAX // loop limit
 } ButtonId;
+
+//-------------------------
+//       State +++9
+//-------------------------
+
+
+typedef enum {
+    SLEEP_MODE = 0,
+    BLUETOOTH_MODE = 1,
+    CALCULATOR_MODE = 2,
+    GAME_MODE = 3,
+    DEF_MODE = 4,
+    MAX_MODE
+} State;
+extern State allState[];
 
 extern ButtonId allButtons[];
 

@@ -19,11 +19,13 @@ button_t button_minus;
 button_t button_multiply;
 button_t button_divide;
 
+State allState[] = {SLEEP_MODE, BLUETOOTH_MODE, CALCULATOR_MODE, GAME_MODE,DEF_MODE, MAX_MODE};
+
 volatile int buttonInitCheck = 0;
 volatile int isEnterClick = 0;
-volatile int gameState = CONNECT;
+volatile int gameState = allState[4];
 volatile int isModeSwitch = 0;
-
+volatile int currentSelection = 0; // when  button enter is pressed, this var is executed
 
 ButtonId allButtons[] = {NUM_0, NUM_1, NUM_2, NUM_3, NUM_4, NUM_5, NUM_6, NUM_7, 
                         NUM_8, NUM_9, BTN_ENTER, BTN_PLUS, BTN_MINUS, BTN_MULTIPLY, BTN_DIVIDE, BTN_SWITCH, NUM_MAX};
@@ -86,15 +88,30 @@ uint8_t button_scan(void) {
 
             // Special handling for specific buttons, if needed
             if (allButtons[i] == BTN_ENTER) {
-                isEnterClick++;  
+                isEnterClick++;
+                switch(currentSelection) {
+                    case 0:
+                        gameState = allState[0];
+                        break;
+                    case 1:
+                        gameState = allState[1];
+                        break;
+                    case 2:
+                        gameState = allState[2];
+                        break;
+                    case 3:
+                        gameState = allState[3];
+                        break;
+                }  
             }
-
             if (allButtons[i] == BTN_SWITCH) {
-                 if(gameState == CONNECT) { 
-                    gameState = DISCONNECT;
-                } 
-                else {
-                    gameState = CONNECT;
+                if(gameState == allState[4]) { // By default state, the system asks user to select mode.
+                                           // If the enter button is pressed, the current selection will be selected
+                                           // if the system ask find are in the other modes, it will skip the first
+                                           // condition.
+                    currentSelection = (currentSelection + 1) % 3; // Cycle through 0, 1, 2, 3
+                } else {
+                    gameState == allState[4];
                 }
                 isModeSwitch = 1;
                 buttonInitCheck++;

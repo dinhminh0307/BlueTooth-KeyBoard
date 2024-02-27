@@ -26,7 +26,7 @@ void displayData(const String &tmp) {
 }
 
 void displayWelcomeMsg(void) {
-  displayData("Choose mode for the device:");
+  displayData("NCT Bluetooth Calculator");
 }
 
 void LCD_Init(void) {
@@ -83,4 +83,18 @@ void displayData(const int tmp) {
 void RTC_Display(void) {
   clearScreen();
   displayData(RTC_GetTime());
+}
+
+void displayMenu(int current) {
+  clearScreen();
+  // Define the menu items
+  String menuItems[] = {"Turn off","Bluetooth", "Calculator", "Games"};
+  for (int i = 0; i < 4; i++) {
+    text_struct currentText = calculateDesiredAlignment(1, menuItems[i]);
+    display.setCursor(currentText.x, currentText.y + i * 10); // Adjust Y for each item, 10 pixels apart
+    if (i == current) {
+      display.print("> "); // Draw cursor for the selected item
+    }
+    display.print(menuItems[i]);
+  }
 }

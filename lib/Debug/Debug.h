@@ -3,6 +3,10 @@
 #include <Adafruit_SSD1306.h>
 #include <CalculatorRTC.h>
 
+/*SCL (Serial Clock) of OLED to GPIO 22 (default I2C SCL) of ESP32
+SDA (Serial Data) of OLED to GPIO 21 (default I2C SDA) of ESP32*/
+
+
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
@@ -23,3 +27,4 @@ void LCD_Init(void);
 void displayWelcomeMsg(void);
 void clearScreen(void);
 void RTC_Display(void);
+void displayMenu(int currentSelection);
