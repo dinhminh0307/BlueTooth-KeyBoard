@@ -17,7 +17,7 @@ String RTC_GetTime(void) {
     struct tm timeinfo;
   if (!getLocalTime(&timeinfo)) {
     Serial.println("Failed to obtain time");
-    return;
+    return "";
   }
 
   delay(1000); // Wait a second before updating the time

@@ -26,7 +26,7 @@ void displayData(const String &tmp) {
 }
 
 void displayWelcomeMsg(void) {
-  displayData("Choose mode for the device:");
+  displayData("Ble");
 }
 
 void LCD_Init(void) {
