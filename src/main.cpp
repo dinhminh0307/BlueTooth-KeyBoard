@@ -14,23 +14,24 @@ void setup() {
 
 void loop() {
   uint8_t test = button_scan();
-  if(gameState == allState[4]) {
-    displayMenu(currentSelection);
-    //displayData(currentSelection);
-  } else if(gameState == allState[0]){
-    clearScreen();
-    displayData("This is sleep mode");
-  } else if(gameState == allState[1]){
-    clearScreen();
-    displayData("This is bluetooth mode");
-    onDataSent(test);
-  } else if(gameState == allState[2]){
-    clearScreen();
-    displayData("This is calculator mode");
-  } else if(gameState == allState[3]){
-    clearScreen();
-    displayData("This is game mode");
-  }
+  onDataSent(test);
+  // if(gameState == allState[4]) {
+  //   displayMenu(currentSelection);
+  //   //displayData(currentSelection);
+  // } else if(gameState == allState[0]){
+  //   clearScreen();
+  //   displayData("This is sleep mode");
+  // } else if(gameState == allState[1]){
+  //   clearScreen();
+  //   displayData("This is bluetooth mode");
+  //   onDataSent(test);
+  // } else if(gameState == allState[2]){
+  //   clearScreen();
+  //   displayData("This is calculator mode");
+  // } else if(gameState == allState[3]){
+  //   clearScreen();
+  //   displayData("This is game mode");
+  // }
 
   //displayMenu(1);
 
