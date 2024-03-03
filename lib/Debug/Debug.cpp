@@ -25,9 +25,7 @@ void displayData(const String &tmp) {
   display.display();
 }
 
-void displayWelcomeMsg(void) {
-  displayData("Ble");
-}
+
 
 void LCD_Init(void) {
     // Initialize with the I2C addr 0x3C (for the 128x64)
@@ -83,4 +81,8 @@ void displayData(const int tmp) {
 void RTC_Display(void) {
   clearScreen();
   displayData(RTC_GetTime());
+}
+
+void displayWelcomeMsg(void) {
+  displayData("Ble");
 }
