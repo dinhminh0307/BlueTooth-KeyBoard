@@ -7,22 +7,23 @@ void setup() {
   Serial.begin(115200);
   button_config();
   BLE_Config();
-  RTC_config();
   LCD_Init();
   delay(100);
-  clearScreen();
+  clearScreen(); // Clear
 }
 
 void loop() {
   uint8_t test = button_scan();
   if(gameState == allState[4]) {
     displayMenu(currentSelection);
+    //displayData(currentSelection);
   } else if(gameState == allState[0]){
     clearScreen();
     displayData("This is sleep mode");
   } else if(gameState == allState[1]){
     clearScreen();
     displayData("This is bluetooth mode");
+    onDataSent(test);
   } else if(gameState == allState[2]){
     clearScreen();
     displayData("This is calculator mode");
@@ -31,7 +32,7 @@ void loop() {
     displayData("This is game mode");
   }
 
-
+  //displayMenu(1);
 
 
 

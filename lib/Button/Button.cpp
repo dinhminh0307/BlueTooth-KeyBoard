@@ -83,7 +83,6 @@ void button_config(void) {
 uint8_t button_scan(void) {
     for (int i = 0; i < sizeof(buttons) / sizeof(buttons[0]); ++i) {
         if (buttons[i]->mode) {  // Assuming mode is a valid member to check if the button is pressed
-            buttonInitCheck++;
             buttons[i]->mode = NONE;  // Reset the button mode
 
             // Special handling for specific buttons, if needed
@@ -109,14 +108,18 @@ uint8_t button_scan(void) {
                                            // If the enter button is pressed, the current selection will be selected
                                            // if the system ask find are in the other modes, it will skip the first
                                            // condition.
-                    currentSelection = (currentSelection + 1) % 3; // Cycle through 0, 1, 2, 3
+                    currentSelection++; // Cycle through 0, 1, 2, 3
+                    if(currentSelection >= 4) {
+                        currentSelection = 0;
+                    }
                 } else {
                     gameState == allState[4];
+                    currentSelection = 0;
                 }
                 isModeSwitch = 1;
-                buttonInitCheck++;
             }
-            delay(100);  // mute all bounce
+            buttonInitCheck++;
+            delay(200);  // mute all bounce
             return allButtons[i];
         }
     }

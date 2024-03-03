@@ -35,7 +35,7 @@ void LCD_Init(void) {
     Serial.println(F("SSD1306 allocation failed"));
     for(;;); // Don't proceed, loop forever
   }
-  clearScreen(); // Clear
+  clearScreen();
   displayWelcomeMsg();
 }
 
@@ -80,21 +80,24 @@ void displayData(const int tmp) {
   display.display();
 }
 
-void RTC_Display(void) {
-  clearScreen();
-  displayData(RTC_GetTime());
-}
+// void RTC_Display(void) {
+//   clearScreen();
+//   displayData(RTC_GetTime());
+// }
 
 void displayMenu(int current) {
   clearScreen();
-  // Define the menu items
-  String menuItems[] = {"Turn off","Bluetooth", "Calculator", "Games"};
+  display.setCursor(0, 0);
+
+  String menuItems[] = {"Sleep","BlueTooth", "Calculator", "Game"};
   for (int i = 0; i < 4; i++) {
-    text_struct currentText = calculateDesiredAlignment(1, menuItems[i]);
-    display.setCursor(currentText.x, currentText.y + i * 10); // Adjust Y for each item, 10 pixels apart
-    if (i == current) {
-      display.print("> "); // Draw cursor for the selected item
+    if (i == current) {  // Highlight the current menu option
+      display.print("> ");
+    } else {
+      display.print("  ");
     }
-    display.print(menuItems[i]);
+    display.println(menuItems[i]);
   }
+
+  display.display();
 }
