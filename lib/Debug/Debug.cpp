@@ -101,3 +101,31 @@ void displayMenu(int current) {
 
   display.display();
 }
+
+void drawBird(int pos, int size) {
+  // Draw bird
+  display.fillCircle(10, pos, size, SSD1306_WHITE);
+}
+
+void drawObstacle(int pos, int width, int gap_height) {
+  display.fillRect(pos, 0, width, SCREEN_HEIGHT / 2 - gap_height / 2, SSD1306_WHITE);
+  display.fillRect(pos, SCREEN_HEIGHT / 2 + gap_height / 2, width, SCREEN_HEIGHT / 2 - gap_height / 2, SSD1306_WHITE);
+}
+
+void gameSetup(void) {
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+}
+
+void displayScreen(void) {
+  display.display();
+}
+
+void gameOverScreen(void) {
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setCursor(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2);
+  display.print("Game Over");
+  display.display();
+}

@@ -28,3 +28,8 @@ void displayWelcomeMsg(void);
 void clearScreen(void);
 void RTC_Display(void);
 void displayMenu(int currentSelection);
+void drawBird(int pos, int size);
+void drawObstacle(int pos, int width, int gap_height);
+void gameSetup(void);
+void displayScreen(void);
+void gameOverScreen(void);
