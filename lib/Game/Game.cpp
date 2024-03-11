@@ -1,14 +1,14 @@
 #include "./Game.h"
 
 // Game variables
-int birdY = SCREEN_HEIGHT / 2;
+int birdY = SCREEN_HEIGHT - 50;
 int birdRadius = 3;  // Adjust based on your bird size
 int gameRunning = 1;
 
 // Obstacle variables
 int obstacleX = SCREEN_WIDTH;
 int obstacleWidth = 20;  // Width of the obstacle
-int gapHeight = 20;  // Height of the gap between obstacles
+int gapHeight = 50;  // Height of the gap between obstacles
 int obstacleSpeed = 2;  // Speed at which obstacle moves
 
 void moveObstacle(void) {
@@ -37,14 +37,14 @@ void checkCollision(void) {
 void onGameRunning(uint8_t enter_button) {
     if (gameRunning) {
     gameSetup();
+  // jump
+    if (enter_button == 1) {  // Button pressed
+      birdY -= 20;  // Adjust jump height as needed
+    }
 
     // Simple gravity 
     birdY += 10;
 
-    // Jump
-    if (enter_button == BTN_ENTER) {  // Button pressed
-      birdY -= 20;  // Adjust jump height as needed
-    }
 
     // Draw bird
     drawBird(birdY, birdRadius);
@@ -57,15 +57,15 @@ void onGameRunning(uint8_t enter_button) {
     checkCollision();
 
     displayScreen();
-    delay(50);  // Adjust game speed as needed
+    delay(100);  // Adjust game speed as needed
   } else {
     // Game over logic
     gameOverScreen();
     delay(2000);  // Display game over message for 2 seconds
     // Reset game variables for a new game
-    birdY = SCREEN_HEIGHT / 2;
+    birdY = SCREEN_HEIGHT - 50;
     obstacleX = SCREEN_WIDTH;
     gameRunning = 1;
   }
-  delay(500);
+  delay(50);
 }

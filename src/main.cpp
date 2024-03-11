@@ -3,18 +3,26 @@
 #include <Game.h>
 /*For error: Failed to connect to ESP32: Invalid head of packet (0x5B): Possible serial noise or corruption
 hold the boot when it is uploading then the chill will be in bootloader mode*/
+
+int buttonPin = 26;
 void setup() {
   Serial.begin(115200);
-  button_config();
-  BLE_Config();
+  pinMode(buttonPin, INPUT_PULLDOWN);
+  //button_config();
+  //BLE_Config();
   LCD_Init();
   delay(100);
   clearScreen(); // Clear
 }
 
 void loop() {
-  uint8_t test = button_scan();
-   onGameRunning(test);
+  uint8_t test = 0;
+  int dataRead = digitalRead(buttonPin);
+  if(dataRead == HIGH) {
+    test = 1;
+    delay(10);
+  }
+  onGameRunning(test);
   //onDataSent(test);
   // if(gameState == allState[4]) {
   //   displayMenu(currentSelection);
