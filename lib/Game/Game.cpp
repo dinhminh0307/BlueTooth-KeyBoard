@@ -4,6 +4,7 @@
 int birdY = SCREEN_HEIGHT - 50;
 int birdRadius = 3;  // Adjust based on your bird size
 int gameRunning = 1;
+int score = 0;
 
 // Obstacle variables
 int obstacleX = SCREEN_WIDTH;
@@ -16,7 +17,8 @@ void moveObstacle(void) {
     if (obstacleX + obstacleWidth < 0) {
       obstacleX = SCREEN_WIDTH;  // Reset obstacle position
       // Randomize gap height for the next obstacle
-      gapHeight = random(10, SCREEN_HEIGHT / 2);
+      gapHeight = random(30, 60);
+      score++;
     }
 }
 
@@ -37,6 +39,8 @@ void checkCollision(void) {
 void onGameRunning(uint8_t enter_button) {
     if (gameRunning) {
     gameSetup();
+
+    displayScore(score);
   // jump
     if (enter_button == 1) {  // Button pressed
       birdY -= 20;  // Adjust jump height as needed
@@ -66,6 +70,7 @@ void onGameRunning(uint8_t enter_button) {
     birdY = SCREEN_HEIGHT - 50;
     obstacleX = SCREEN_WIDTH;
     gameRunning = 1;
+    score = 0;
   }
   delay(50);
 }

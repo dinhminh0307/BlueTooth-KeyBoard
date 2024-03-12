@@ -129,3 +129,11 @@ void gameOverScreen(void) {
   display.print("Game Over");
   display.display();
 }
+
+void displayScore(int score) {
+  display.setTextSize(1);      // Normal 1:1 pixel scale
+  display.setTextColor(SSD1306_WHITE); // Set the text color to white
+  display.setCursor(0, 0);     // Start at top-left corner 
+  display.print(score);
+  display.display();
+}

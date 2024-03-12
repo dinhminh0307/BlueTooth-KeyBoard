@@ -33,3 +33,4 @@ void drawObstacle(int pos, int width, int gap_height);
 void gameSetup(void);
 void displayScreen(void);
 void gameOverScreen(void);
+void displayScore(int score);
