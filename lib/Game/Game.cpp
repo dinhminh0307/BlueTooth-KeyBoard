@@ -10,7 +10,7 @@ int score = 0;
 int obstacleX = SCREEN_WIDTH;
 int obstacleWidth = 20;  // Width of the obstacle
 int gapHeight = 50;  // Height of the gap between obstacles
-int obstacleSpeed = 2;  // Speed at which obstacle moves
+int obstacleSpeed = 5;  // Speed at which obstacle moves
 
 void moveObstacle(void) {
     obstacleX -= obstacleSpeed;
