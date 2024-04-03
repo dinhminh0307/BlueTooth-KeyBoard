@@ -16,4 +16,4 @@
 | Battery wiring                                  | Hardware | In Progress |
 
 # Project Demostration
-[![Bluetooth Calculator]]([http://www.youtube.com/watch?v=TyZ74DFeD5E "Video Title](https://youtube.com/shorts/TyZ74DFeD5E)")
+[The Bluetooth Keyboard](https://www.youtube.com/shorts/TyZ74DFeD5E)
