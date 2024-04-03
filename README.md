@@ -14,3 +14,6 @@
 | Button component soldering                      | Hardware | Done        |
 | 3D printing of case and bottom                  | Hardware | Done        |
 | Battery wiring                                  | Hardware | In Progress |
+
+# Project Demostration
+[![Bluetooth Calculator]]([http://www.youtube.com/watch?v=VIDEO_ID "Video Title](https://youtube.com/shorts/TyZ74DFeD5E)")
