@@ -16,4 +16,4 @@
 | Battery wiring                                  | Hardware | In Progress |
 
 # Project Demostration
-[![Bluetooth Calculator]]([http://www.youtube.com/watch?v=VIDEO_ID "Video Title](https://youtube.com/shorts/TyZ74DFeD5E)")
+[![Bluetooth Calculator]]([http://www.youtube.com/watch?v=TyZ74DFeD5E "Video Title](https://youtube.com/shorts/TyZ74DFeD5E)")
